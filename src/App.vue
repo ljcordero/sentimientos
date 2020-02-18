@@ -1,61 +1,50 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+    <v-app-bar app color="primary" dark>
+      <v-toolbar-title>Análisis de Sentimientos</v-toolbar-title>
     </v-app-bar>
-
+    <div v-if="loading" class="center">
+      <v-progress-circular
+        size="64"
+        width="8"
+        indeterminate
+        color="primary">
+      </v-progress-circular>
+    </div>
     <v-content>
-      <HelloWorld/>
+      <Content />
     </v-content>
   </v-app>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import HelloWorld from './components/HelloWorld.vue';
+import { Component } from 'vue-property-decorator';
+import { Getter } from 'vuex-class';
+import Content from '@/components/Content/Content';
 
-export default Vue.extend({
-  name: 'App',
-
+@Component({
   components: {
-    HelloWorld,
+    Content,
   },
-
-  data: () => ({
-    //
-  }),
-});
+})
+export default class App extends Vue {
+  @Getter loading!: boolean;
+}
 </script>
+
+<style lang="scss" scoped>
+  .center {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba($color: #000000, $alpha: 0.6);
+    z-index: 5;
+
+    > div {
+      position: fixed;
+      top: 47.5%;
+      left: 47.5%;
+    }
+  }
+</style>
