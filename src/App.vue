@@ -21,7 +21,7 @@
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
 import { Getter } from 'vuex-class';
-import Content from '@/components/Content/Content';
+import Content from '@/components/Content/Content.vue';
 
 @Component({
   components: {

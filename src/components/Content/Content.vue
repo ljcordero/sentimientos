@@ -90,4 +90,4 @@
     </v-row>
   </v-container>
 </template>
-<script lang="ts" src="./Content1.ts">
+<script lang="ts" src="./Content.ts">

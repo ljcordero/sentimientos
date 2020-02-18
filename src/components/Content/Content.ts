@@ -1,8 +1,12 @@
 import Vue from 'vue';
 import { Component } from 'vue-property-decorator';
+import Clasifier from '@/components/Clasifier/Clasifier.vue';
+import Trainer from '@/components/Trainer/Trainer.vue';
 
 @Component({
   components: {
+    Clasifier,
+    Trainer,
   },
 })
 export default class Content extends Vue {
