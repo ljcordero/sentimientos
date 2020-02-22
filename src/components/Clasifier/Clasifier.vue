@@ -1,5 +1,5 @@
 <template>
-  <v-row>
+  <v-row justify="center">
     Clasifier
   </v-row>
 </template>
