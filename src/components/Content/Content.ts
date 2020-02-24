@@ -4,6 +4,7 @@ import { Getter } from 'vuex-class';
 import Clasifier from '@/components/Clasifier/Clasifier.vue';
 import Trainer from '@/components/Trainer/Trainer.vue';
 import Footer from '@/components/Footer/Footer.vue';
+import Reference from '@/core/models/Reference';
 
 @Component({
   components: {
@@ -13,5 +14,5 @@ import Footer from '@/components/Footer/Footer.vue';
   },
 })
 export default class Content extends Vue {
-  @Getter references!: any[];
+  @Getter references!: Reference[];
 }

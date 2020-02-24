@@ -1,9 +1,11 @@
+import Reference from '@/core/models/Reference';
+
 export default class State {
   public loading: boolean;
 
   public repositoryUrl: string;
 
-  public references: any[];
+  public references: Reference[];
 
   constructor() {
     this.loading = false;
