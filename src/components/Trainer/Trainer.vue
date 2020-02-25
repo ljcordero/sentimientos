@@ -11,7 +11,16 @@
       ></v-text-field>
     </v-col>
     <v-col cols="12">
-      <v-btn :disabled="!!!text" @click="train" color="primary">Entrenar</v-btn>
+      <v-select
+        v-model="classification"
+        :items="classifications"
+        filled
+        outlined
+        label="Clasificación"
+      ></v-select>
+    </v-col>
+    <v-col cols="12">
+      <v-btn :disabled="btnDisabled" @click="train" color="primary">Entrenar</v-btn>
     </v-col>
   </v-row>
 </template>
