@@ -12,17 +12,29 @@ export default class EvaluationService {
     this.evaluations = evaluations;
   }
 
-  public train(config: Dataset) {
+  private train(callback: Function) {
     this.evaluations.forEach((evaluation) => {
       const model = evaluation.classifier as Trainer;
       if ('train' in model) {
-        const dividerResult = datasetDivider(config, 100);
-        datasetTrainer({
-          model,
-          dataset: dividerResult.train,
-          config,
-        });
+        callback(model);
       }
+    });
+  }
+
+  public trainFromValue(text: string, label: string) {
+    this.train((model: Trainer) => {
+      model.train(text, label);
+    });
+  }
+
+  public trainFromConfig(config: Dataset) {
+    this.train((model: Trainer) => {
+      const dividerResult = datasetDivider(config, 100);
+      datasetTrainer({
+        model,
+        dataset: dividerResult.train,
+        config,
+      });
     });
   }
 

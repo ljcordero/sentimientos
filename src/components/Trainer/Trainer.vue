@@ -22,6 +22,7 @@
     <v-col cols="12">
       <v-btn :disabled="btnDisabled" @click="train" color="primary">Entrenar</v-btn>
     </v-col>
+    <v-snackbar v-model="snackbar" top color="success">Entrenado</v-snackbar>
   </v-row>
 </template>
 <script lang="ts" src="./Trainer.ts">

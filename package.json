@@ -9,8 +9,10 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@types/lodash": "^4.14.149",
     "bayes-classifier": "0.0.5",
     "core-js": "^3.6.4",
+    "lodash": "^4.17.15",
     "multilang-sentiment": "^1.2.0",
     "ts-debounce": "^2.0.1",
     "vue": "^2.6.11",
