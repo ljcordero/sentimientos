@@ -4,12 +4,14 @@ import { debounce } from 'ts-debounce';
 import EvaluationService from '@/core/services/EvaluationService';
 import EvaluationResult from '@/core/models/EvaluationResult';
 import { TweetTASS } from '@/core/models/Dataset';
-import { Getter } from 'vuex-class';
+import { Getter, Action } from 'vuex-class';
 
 const ONE_SECOND_MILLISECONDS = 1000;
 
 @Component
 export default class Classifier extends Vue {
+  @Action setLoading!: (loading: boolean) => void;
+
   @Getter evaluation!: EvaluationService;
 
   private text = '';
@@ -18,8 +20,10 @@ export default class Classifier extends Vue {
 
   private debouncedTextChange = debounce(this.onTextChange, ONE_SECOND_MILLISECONDS);
 
-  mounted() {
-    this.evaluation.trainFromConfig(TweetTASS);
+  async mounted() {
+    this.setLoading(true);
+    await this.evaluation.trainFromConfig(TweetTASS);
+    this.setLoading(false);
   }
 
   private onTextChange(): void {

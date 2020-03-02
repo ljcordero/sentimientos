@@ -9,6 +9,10 @@ export default class NaiveBayesService implements Classifier, Trainer {
     return this.classifier.classify(text);
   }
 
+  public restore(processed: {}): void {
+    this.classifier.restore(processed);
+  }
+
   public train(text: string, label: string): void {
     this.classifier.addDocument(text, label);
     this.classifier.train();

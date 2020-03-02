@@ -7,14 +7,9 @@
 
       <v-col class="mb-4" cols="12">
         <h1 class="display-2 font-weight-bold mb-3">Análisis de Sentimientos</h1>
-
-        <p class="subheading font-weight-regular">
+        <br />
+        <p style="padding: 0 15%" class="text-justify subheading font-weight-regular">
           For help and collaboration with other Vuetify developers,
-          <br />please join our online
-          <a
-            href="https://community.vuetifyjs.com"
-            target="_blank"
-          >Discord Community</a>
         </p>
       </v-col>
 
