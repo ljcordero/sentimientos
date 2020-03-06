@@ -32,12 +32,25 @@ describe('datasets validations', () => {
           total: 0,
         };
 
+        // eslint-disable-next-line
+        const confusionMatrix: any = {};
+
         dataset.train.forEach((data) => {
           model.train(data[config.value], data[config.key]);
         });
 
         dataset.test.forEach((data) => {
           const result = model.classify(data[config.value]);
+
+          if (!confusionMatrix[result]) {
+            confusionMatrix[result] = {
+              [data[config.key]]: 0,
+            };
+          } else if (!confusionMatrix[result][data[config.key]]) {
+            confusionMatrix[result][data[config.key]] = 0;
+          }
+
+          confusionMatrix[result][data[config.key]] += 1;
 
           validationResult.total += 1;
 
@@ -47,6 +60,8 @@ describe('datasets validations', () => {
         });
 
         console.log(`Accuracy: ${(validationResult.success / validationResult.total) * 100}`);
+        console.log('Confusion Matrix:');
+        console.log(confusionMatrix);
       });
     });
   }).timeout(Number.MAX_VALUE);

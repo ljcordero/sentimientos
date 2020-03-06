@@ -5,14 +5,15 @@
         <v-img :src="require('../../assets/logo.jpg')" class="my-3" contain height="300" />
       </v-col>
 
-      <v-col class="mb-4" cols="12">
+      <v-col class="mb-5" cols="12">
         <h1 class="display-2 font-weight-bold mb-3">Análisis de Sentimientos</h1>
         <br />
-        <p style="padding: 0 15%" class="text-justify subheading font-weight-regular">
-          For help and collaboration with other Vuetify developers,
-        </p>
+        <Description />
       </v-col>
 
+      <v-col class="mb-5" cols="12">
+        <h1 class="display-2 font-weight-bold mb-3">Demo</h1>
+      </v-col>
       <v-col class="mb-5" cols="6">
         <h2 class="headline font-weight-bold mb-3">Clasificar</h2>
         <Classifier />
@@ -25,15 +26,10 @@
 
       <v-col class="mb-5" cols="12">
         <h2 class="headline font-weight-bold mb-3">Referencias</h2>
-        <v-row justify="center">
-          <a
-            v-for="(reference, i) in references"
-            :key="i"
-            :href="reference.href"
-            class="subheading mx-3"
-            target="_blank"
-          >{{ reference.text }}</a>
-        </v-row>
+        <div v-for="(reference, i) in references" :key="i">
+          <a :href="reference.href" class="subheading mx-3" target="_blank">{{ reference.text }}</a>
+          <br />
+        </div>
       </v-col>
     </v-row>
     <br />
